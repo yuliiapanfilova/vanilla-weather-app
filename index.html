@@ -16,8 +16,164 @@
   </head>
   <body>
     <div class="container">
-      <h1>Hello World</h1>
-      <a class="btn btn-primary">click me</a>
+      <div class="outer">
+        <div class="middle">
+          <div class="inner">
+            <div class="container weather-app">
+              <!--search block-->
+              <form class="location-search">
+                <div class="input-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter the city"
+                    id="search-input"
+                  />
+                  <input
+                    class="btn btn-primary custom-buttom"
+                    type="submit"
+                    placeholder="Search"
+                    id="search-button"
+                  />
+                </div>
+              </form>
+              <!--current city-->
+              <div class="row current-location">
+                <div class="col current-city" id="current-city">
+                  <div class="search-city">
+                    <span class="city"> Kyiv</span>
+                  </div>
+                  <div class="current-date">
+                    <span class="day" id="day"> Sunday </span>
+                    <span class="time" id="time"></span>
+                  </div>
+                  <div>
+                    <span class="current-weather">
+                      <img src="images/sun.png" alt="sunny" width="30px" />
+                    </span>
+                    <span class="temp"> 12 </span
+                    ><span class="units">
+                      <a href="#" id="celsius"> °C </a>|<a
+                        href="#"
+                        id="fahrenheit"
+                      >
+                        °F
+                      </a></span
+                    >
+                  </div>
+                </div>
+
+                <div class="col-4 current-location-details">
+                  <div class="col-12">
+                    Precipitation: <span class="precipitation">1%</span>
+                  </div>
+                  <div class="col-12">
+                    Humidity: <span class="humidity">52%</span>
+                  </div>
+                  <div class="col-12">
+                    Wind: <span class="wind-speed">5km/h</span>
+                  </div>
+                </div>
+                <!--five days forecast-->
+                <div class="container text-center five-days-forecast">
+                  <div class="row">
+                    <div class="col">
+                      <div class="row">
+                        <div class="col-12">Mon</div>
+                        <div class="col-12 weather-icon">
+                          <img src="images/rain.png" alt="rain" width="40px" />
+                        </div>
+                        <div class="col-12">
+                          <span class="day-temp"> 8°/ </span>
+                          <span class="night-temp">0°</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="row">
+                        <div class="col-12">Tue</div>
+                        <div class="col-12 weather-icon">
+                          <img
+                            src="images/cloudy.png"
+                            alt="cloudy"
+                            width="40px"
+                          />
+                        </div>
+                        <div class="col-12">
+                          <span class="day-temp"> 10°/ </span>
+                          <span class="night-temp">2°</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="row">
+                        <div class="col-12">Wed</div>
+                        <div class="col-12 weather-icon">
+                          <img src="images/sun.png" alt="sunny" width="40px" />
+                        </div>
+                        <div class="col-12">
+                          <span class="day-temp"> 12°/ </span>
+                          <span class="night-temp">2°</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="row">
+                        <div class="col-12">Thu</div>
+                        <div class="col-12 weather-icon">
+                          <img
+                            src="images/storm.png"
+                            alt="storm"
+                            width="40px"
+                          />
+                        </div>
+                        <div class="col-12">
+                          <span class="day-temp"> 6°/ </span>
+                          <span class="night-temp">0°</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="row">
+                        <div class="col-12">Fri</div>
+                        <div class="col-12 weather-icon">
+                          <img
+                            src="images/cloudy.png"
+                            alt="cloudy"
+                            width="40px"
+                          />
+                        </div>
+                        <div class="col-12">
+                          <span class="day-temp"> 8°/ </span>
+                          <span class="night-temp">1°</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="row">
+                        <div class="col-12">Sat</div>
+                        <div class="col-12 weather-icon">
+                          <img src="images/sun.png" alt="sunny" width="40px" />
+                        </div>
+                        <div class="col-12">
+                          <span class="day-temp"> 12°/ </span>
+                          <span class="night-temp">2°</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <footer>
+              <a href="https://github.com/yuliiapanfilova/vanilla-weather-app"
+                >Open-source code</a
+              >
+              by Yuliia Panfilova
+            </footer>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="src/app.js"></script>
     <script
