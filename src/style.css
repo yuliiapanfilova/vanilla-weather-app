@@ -67,6 +67,11 @@ div.current-location-details {
 #city {
   font-size: 22px;
 }
+#icon {
+  margin: 0 auto;
+  position: relative;
+  left: -25px;
+}
 #temp {
   font-weight: 700;
   font-size: 48px;

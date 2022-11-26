@@ -25,6 +25,7 @@ function currentDate(timestamp) {
 
 //get current temperature details
 function showTemp(response) {
+  console.log(response.data);
   let tempElement = document.querySelector("#temp");
   let cityElement = document.querySelector("#city");
   let descriptionElement = document.querySelector("#description");
@@ -33,8 +34,7 @@ function showTemp(response) {
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
 
-  //let precipitationElement = document.querySelector("#precipitation"); ??not in the API
-  tempElement = Math.round(response.data.main.temp);
+  tempElement.innerHTML = Math.round(response.data.main.temp);
   cityElement.innerHTML = response.data.name;
   descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = response.data.main.humidity;
@@ -47,8 +47,18 @@ function showTemp(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
+function search(city) {
+  let apiKey = "85bbd3d16a2dfe0ecf253c7ae1e8fe03";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+  axios.get(apiUrl).then(showTemp);
+}
+function submitInfo(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#search-input");
+  search(cityInputElement.value);
+}
+
 //weather API
-let apiKey = "85bbd3d16a2dfe0ecf253c7ae1e8fe03";
-let city = "Kyiv";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
-axios.get(apiUrl).then(showTemp);
+
+let form = document.querySelector("#location-search");
+form.addEventListener("submit", submitInfo);
