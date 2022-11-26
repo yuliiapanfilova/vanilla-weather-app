@@ -31,6 +31,8 @@ function showTemp(response) {
   let windElement = document.querySelector("#wind");
   let humidityElement = document.querySelector("#humidity");
   let dateElement = document.querySelector("#date");
+  let iconElement = document.querySelector("#icon");
+
   //let precipitationElement = document.querySelector("#precipitation"); ??not in the API
   tempElement = Math.round(response.data.main.temp);
   cityElement.innerHTML = response.data.name;
@@ -38,9 +40,15 @@ function showTemp(response) {
   humidityElement.innerHTML = response.data.main.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
   dateElement.innerHTML = currentDate(response.data.dt * 1000);
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 //weather API
 let apiKey = "85bbd3d16a2dfe0ecf253c7ae1e8fe03";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Kyiv&units=metric&appid=${apiKey}`;
+let city = "Kyiv";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
 axios.get(apiUrl).then(showTemp);
