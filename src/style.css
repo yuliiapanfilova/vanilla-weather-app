@@ -64,13 +64,23 @@ div.current-location-details {
   padding-top: 25px;
 }
 
-.city {
+#city {
   font-size: 22px;
 }
-.temp {
+#temp {
   font-weight: 700;
   font-size: 48px;
 }
+#description {
+  font-size: 12px;
+  line-height: normal;
+  margin: 0 auto;
+  padding-bottom: 30px;
+}
+#description:first-letter {
+  text-transform: capitalize;
+}
+
 span.units {
   position: relative;
   top: -20px;
