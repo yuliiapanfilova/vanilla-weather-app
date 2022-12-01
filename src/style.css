@@ -68,16 +68,17 @@ div.current-location-details {
   font-size: 22px;
 }
 #icon {
-  margin: 0 auto;
+  margin: -10px;
   position: relative;
-  left: -25px;
 }
 #temp {
   font-weight: 700;
   font-size: 48px;
+  position: relative;
+  bottom: -10px;
 }
 #description {
-  font-size: 12px;
+  font-size: 13px;
   line-height: normal;
   margin: 0 auto;
   padding-bottom: 30px;
@@ -88,7 +89,7 @@ div.current-location-details {
 
 span.units {
   position: relative;
-  top: -20px;
+  top: -10px;
 }
 #celsius {
   text-decoration: none;
@@ -104,11 +105,21 @@ span.units {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.7);
 }
-div.five-days-forecast {
+.five-days-forecast {
   display: block;
   margin: 0 auto;
-  font-size: 14px;
   color: rgba(0, 0, 0, 0.7);
+  text-align: center;
+}
+.forecast-date {
+  font-size: 16px;
+  opacity: 0.5;
+}
+.forecast-temp {
+  font-size: 13px;
+}
+.night-temp {
+  opacity: 0.5;
 }
 .weather-icon {
   font-size: 35px;

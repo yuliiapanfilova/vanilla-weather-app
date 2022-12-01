@@ -23,6 +23,27 @@ function currentDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  forecastHTML =
+    forecastHTML +
+    ` 
+                  <div class="col">
+                    <div class="row">
+                      <div class="col-12 forecast-date">Mon</div>
+                      <img src="" alt="" width="30px" />
+                      <div class="col-12 forecast-temp">
+                        <span class="day-temp"> 8° </span>
+                        <span class="night-temp">0°</span>
+                      </div>
+                    </div>
+                  </div>
+                `;
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 //get current temperature details
 function showTemp(response) {
   console.log(response.data);
@@ -87,3 +108,6 @@ celsiusLink.addEventListener("click", showCelsius);
 
 let form = document.querySelector("#location-search");
 form.addEventListener("submit", submitInfo);
+
+search("Kyiv");
+displayForecast();
