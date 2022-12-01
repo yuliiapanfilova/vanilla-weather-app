@@ -23,27 +23,35 @@ function currentDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
-  let forecastHTML = `<div class="row">`;
-  forecastHTML =
-    forecastHTML +
-    ` 
-                  <div class="col">
+
+  forecast.forEach(function (forecastDay) {
+    forecastHTML = `<div class="row">`;
+    forecastHTML =
+      forecastHTML +
+      `<div class="col">
                     <div class="row">
-                      <div class="col-12 forecast-date">Mon</div>
-                      <img src="" alt="" width="30px" />
+                      <div class="col-12 forecast-date">${forecastDay.dt}</div>
+                      <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="" width="30px" />
                       <div class="col-12 forecast-temp">
-                        <span class="day-temp"> 8° </span>
-                        <span class="night-temp">0°</span>
+                        <span class="day-temp"> ${forecastDay.temp.max}°</span>
+                        <span class="night-temp">${forecastDay.temp.min}°</span>
                       </div>
                     </div>
                   </div>
                 `;
+  });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
 
+function getForecast(coordinates) {
+  let apiKey = "85bbd3d16a2dfe0ecf253c7ae1e8fe03";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.lat}&lon=${coordinates.lon}&units=metric&appid=${apiKey}`;
+  axios.get(apiUrl).then(displayForecast);
+}
 //get current temperature details
 function showTemp(response) {
   console.log(response.data);
@@ -68,6 +76,8 @@ function showTemp(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 }
 
 function search(city) {
@@ -110,4 +120,3 @@ let form = document.querySelector("#location-search");
 form.addEventListener("submit", submitInfo);
 
 search("Kyiv");
-displayForecast();
