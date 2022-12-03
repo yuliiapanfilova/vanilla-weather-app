@@ -108,31 +108,8 @@ function submitInfo(event) {
   let cityInputElement = document.querySelector("#search-input");
   search(cityInputElement.value);
 }
-function showFahrenheit(event) {
-  event.preventDefault();
-  let tempElement = document.querySelector("#temp");
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
-  tempElement.innerHTML = Math.round(fahrenheitTemp);
-}
 
-function showCelsius(event) {
-  event.preventDefault();
-  let tempElement = document.querySelector("#temp");
-  fahrenheitLink.classList.remove("active");
-  celsiusLink.classList.add("active");
-  tempElement.innerHTML = Math.round(celsiusTemp);
-}
 //weather API
-
-let celsiusTemp = null;
-
-let fahrenheitLink = document.querySelector("#fahrenheit");
-fahrenheitLink.addEventListener("click", showFahrenheit);
-
-let celsiusLink = document.querySelector("#celsius");
-celsiusLink.addEventListener("click", showCelsius);
 
 let form = document.querySelector("#location-search");
 form.addEventListener("submit", submitInfo);

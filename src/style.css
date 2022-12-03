@@ -26,13 +26,17 @@ div.input-group {
   max-width: 700px;
 }
 .input-group
-  > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+  > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(
+    .valid-feedback
+  ):not(.invalid-tooltip):not(.invalid-feedback) {
   background: #4b3eae;
   border: 1px solid #4b3eae;
   border-radius: 0 35px 35px 0;
 }
 .input-group:hover
-  > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+  > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(
+    .valid-feedback
+  ):not(.invalid-tooltip):not(.invalid-feedback) {
   background: rgb(220, 216, 248);
   color: #4b3eae;
 }
@@ -91,20 +95,7 @@ span.units {
   position: relative;
   top: -10px;
 }
-#celsius {
-  text-decoration: none;
-}
-#fahrenheit {
-  text-decoration: none;
-}
-.active {
-  color: rgba(0, 0, 0, 0.7);
-  cursor: default;
-}
-.active:hover {
-  text-decoration: none;
-  color: rgba(0, 0, 0, 0.7);
-}
+
 .five-days-forecast {
   display: block;
   margin: 0 auto;
