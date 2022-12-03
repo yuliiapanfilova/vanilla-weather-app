@@ -17,7 +17,7 @@ div.container.weather-app {
   margin: 0 auto;
   padding: 50px;
   border-radius: 36px;
-  background-color: #efedfa;
+  background-color: rgb(239, 237, 249);
   border: 10px solid #bbb5e1;
   max-width: 600px;
 }
@@ -66,11 +66,15 @@ div.col.current-city {
 div.current-location-details {
   font-size: 13px;
   padding-top: 25px;
+  position: relative;
+  margin-top: 80px;
 }
 
 #city {
-  font-size: 22px;
+  font-size: 30px;
+  font-weight: 500;
 }
+
 #icon {
   margin: -10px;
   position: relative;
@@ -104,7 +108,7 @@ span.units {
 }
 .forecast-date {
   font-size: 16px;
-  opacity: 0.5;
+  opacity: 0.7;
 }
 .forecast-temp {
   font-size: 13px;

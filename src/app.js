@@ -33,26 +33,27 @@ function formatDay(timestamp) {
 
 function displayForecast(response) {
   let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
-    if (index < 6) {
+    if ((index >= 1) & (index < 7)) {
       forecastHTML =
         forecastHTML +
         `<div class="col">
                     <div class="row">
                       <div class="col-12 forecast-date">${formatDay(
-                        forecastDay.dt
+                        forecastDay.time
                       )}</div>
-                      <img src="http://openweathermap.org/img/wn/${
-                        forecastDay.weather[0].icon
-                      }@2x.png" alt="" width="30px" />
+                      <img src="${
+                        forecastDay.condition.icon_url
+                      }" alt="" width="30px" />
                       <div class="col-12 forecast-temp">
                         <span class="day-temp"> ${Math.round(
-                          forecastDay.temp.max
+                          forecastDay.temperature.maximum
                         )}°</span>
                         <span class="night-temp">${Math.round(
-                          forecastDay.temp.min
+                          forecastDay.temperature.minimum
                         )}°</span>
                       </div>
                     </div>
@@ -65,14 +66,11 @@ function displayForecast(response) {
 }
 
 function getForecast(coordinates) {
-  let apiKey = "85bbd3d16a2dfe0ecf253c7ae1e8fe03";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.lat}&lon=${coordinates.lon}&units=metric&appid=${apiKey}`;
-
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`; //shecodes
   axios.get(apiUrl).then(displayForecast);
 }
 //get current temperature details
 function showTemp(response) {
-  //console.log(response.data);
   let tempElement = document.querySelector("#temp");
   let cityElement = document.querySelector("#city");
   let descriptionElement = document.querySelector("#description");
@@ -81,26 +79,22 @@ function showTemp(response) {
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
 
-  celsiusTemp = response.data.main.temp;
+  celsiusTemp = response.data.temperature.current; //shecodes
 
   tempElement.innerHTML = Math.round(celsiusTemp);
-  cityElement.innerHTML = response.data.name;
-  descriptionElement.innerHTML = response.data.weather[0].description;
-  humidityElement.innerHTML = response.data.main.humidity;
-  windElement.innerHTML = Math.round(response.data.wind.speed);
-  dateElement.innerHTML = currentDate(response.data.dt * 1000);
-  iconElement.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
-  iconElement.setAttribute("alt", response.data.weather[0].description);
+  cityElement.innerHTML = response.data.city; //shecodes
+  descriptionElement.innerHTML = response.data.condition.description; //shecodes -- error
+  humidityElement.innerHTML = response.data.temperature.humidity; //shecodes
+  windElement.innerHTML = Math.round(response.data.wind.speed); //shecodes
+  dateElement.innerHTML = currentDate(response.data.time * 1000); //shecodes
+  iconElement.setAttribute("src", response.data.condition.icon_url); //shecodes
+  iconElement.setAttribute("alt", response.data.condition.icon); //shecodes
 
-  getForecast(response.data.coord);
+  getForecast(response.data.coordinates); //shecodes
 }
 
 function search(city) {
-  let apiKey = "85bbd3d16a2dfe0ecf253c7ae1e8fe03";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`; // shecodes
   axios.get(apiUrl).then(showTemp);
 }
 function submitInfo(event) {
@@ -110,6 +104,8 @@ function submitInfo(event) {
 }
 
 //weather API
+
+let apiKey = "45e6544763o7af19tbbb41a1c3521f60"; //shecodes key
 
 let form = document.querySelector("#location-search");
 form.addEventListener("submit", submitInfo);
